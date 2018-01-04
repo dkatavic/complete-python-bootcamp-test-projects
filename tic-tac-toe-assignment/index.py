@@ -41,13 +41,13 @@ def set_symbol(state, symbol, coords):
 def get_next_play(state, i):
     player = get_player(i)
     symbol = get_player_symbol(player)
-    print('Player {pl} turn'.format(pl=player))
-    print('Enter your symbol coordinates ({pl_sym})'.format(pl_sym=symbol))
-    x = int(input('Row Coordinates of your play:')) - 1
-    y = int(input('Col Coordinates of your play:')) - 1
-    coords = [x, y]
     result = {'success': 0}
     while result['success'] == 0:
+        print('Player {pl} turn'.format(pl=player))
+        print('Enter your symbol coordinates ({pl_sym})'.format(pl_sym=symbol))
+        x = int(input('Row Coordinates of your play:')) - 1
+        y = int(input('Col Coordinates of your play:')) - 1
+        coords = [x, y]
         result = set_symbol(state, symbol, coords)
     return result['state']
 
