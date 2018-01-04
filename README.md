@@ -1,2 +1,3 @@
 # complete-python-bootcamp-test-projects
-Projects from the udemy's complete python bootcamp cource
+My Project Solutions from the Udemy's complete python bootcamp course
+
