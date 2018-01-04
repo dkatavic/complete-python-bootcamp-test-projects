@@ -52,12 +52,37 @@ def get_next_play(state, i):
     return result['state']
 
 
+def is_the_game_done(state):
+    for i in range(0, 3):
+        # Check row
+        if (len(set(state[i])) == 1 and state[i][0] != 0):
+            return 1
+        # Check column
+        colmn = [state[y][i] for y in range(0, 3)]
+        if (len(set(colmn)) == 1 and colmn[0] != 0):
+            return 1
+    # Check cross
+    forw_cross = [state[i][i] for i in range(0, 3)]
+    if (len(set(forw_cross)) == 1 and state[1][1] != 0):
+        return 1
+    back_cross = [state[i][2 - i] for i in range(0, 3)]
+    if (len(set(back_cross)) == 1 and state[1][1] != 0):
+        return 1
+    return 0
+
+
 def start_game():
     state = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     print('Coordinates are in the range of [1,3][1,3]')
     print_board(state)
     for i in range(0, 9):
         state = get_next_play(state, i)
+        if (is_the_game_done(state) == 1):
+            print('Game is done')
+            player = get_player(i)
+            print('Player {pl} won !!!!'.format(pl=player))
+            print_board(state)
+            return
         print_board(state)
 
 
